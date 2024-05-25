@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
   }
-  .container{
-    min-height: 100vh;
+  .container-bg{
+    min-height: 89vh;
     min-width: 100%;
   }
   .card{
@@ -14,4 +14,8 @@
 .btn-alt{
   height: 150px;
   min-width: 400px;
+}
+.relatorio{
+  height: 150px;
+  min-width: 100%;
 }
