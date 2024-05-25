@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .container{
+    min-height: 100vh;
+    min-width: 100%;
+  }
+  .card{
+    width: 400px;
+    min-height: 100px;
+    padding: 2rem;
+}
