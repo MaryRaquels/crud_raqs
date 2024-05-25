@@ -38,7 +38,7 @@
                     </select>
                     <label for="funcao">Função <span style="color: #FF0000">*</span></label>
                     </div>
-                    <input type="submit" value="Enviar" name="submit" class="btn btn-info w-100">
+                    <input type="submit" value="Enviar" name="submit" class="btn w-100 text-light" style="background-color: #1d405c">
                 </form>
             </div>
         </div>    

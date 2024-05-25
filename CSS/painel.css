@@ -11,3 +11,7 @@
     min-height: 100px;
     padding: 2rem;
 }
+.btn-alt{
+  height: 150px;
+  min-width: 400px;
+}
