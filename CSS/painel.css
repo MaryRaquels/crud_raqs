@@ -2,20 +2,11 @@
     margin: 0;
     padding: 0;
   }
-  .container-bg{
-    min-height: 89vh;
+.container-bg{
+    min-height: 100vh;
     min-width: 100%;
   }
-  .card{
-    width: 400px;
-    min-height: 100px;
-    padding: 2rem;
-}
 .btn-alt{
   height: 150px;
   min-width: 400px;
-}
-.relatorio{
-  height: 150px;
-  min-width: 100%;
-}
+  }

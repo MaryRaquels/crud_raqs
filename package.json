@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "parsleyjs": "^2.9.2"
+    "parsleyjs": "^2.9.2",
+    "sweetalert2": "^11.11.0"
   }
 }
