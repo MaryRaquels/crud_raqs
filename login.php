@@ -54,7 +54,7 @@
                         <input type="password" class="form-control " name="senha" required>
                         <label for="senha">Senha <span style="color: #FF0000">*</span></label>
                     </div>
-                    <input type="submit" value="Enviar" name="submit" class="btn btn-info w-100">
+                    <input type="submit" value="Enviar" name="submit" class="btn w-100 text-light" style="background-color: #1d405c">
                 </form>
 <!--LINK-CAD-->
                 <div class="card-footer py-3 hover-shadow text-center bg-light">
