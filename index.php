@@ -19,46 +19,59 @@ if(!isset($_SESSION['login'])){
 </head>
 <body>
     <div class="container container-bg p-0">
-        <nav class="navbar navbar-expand-sm d-flex flex-wrap" style="background-color: #1d405c">
+<!--NAVBAR-->
+        <nav class="navbar navbar-expand-sm d-flex aligh-items-center justify-items-center justify-content-start" style="background-color: #1d405c">
             <a class="navbar-brand mx-3" href="#">
                 <img src="./images/logo-certa.png" alt="" style="width:40px;" class="rounded-pill ">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" id="navbarNav" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-bs-theme="light">
                 <span class="navbar-toggler-icon"></span>
+            </button>    
+            <div class="collapse navbar-collapse" tabindex="-1" id="navbarNav" >
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link active link-light" href="#">Painel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active link-light" href="#">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active link-light" href="#">Funcionários</a>
+                    </li>
+                </ul>
+                <div class="d-grid gap-4 d-sm-flex justify-content-sm-end collapse navbar-collapse" id="navbarNav">
+                    <button class="btn me-sm-4" type="button" style="background: #87CEEB;">
+                        <a class="text-decoration-none link-dark" href="./verificador/logout.php">Logout</a>
+                    </button>
+                </div>
+            </div>
+        </nav>
+<!--DASHBOARD-->
+        <div class="d-flex">
+            <h1 class=" pt-3 mx-4 px-1">Bem-vindo, Usuário!</h1>
+        </div>
+        <hr>
+        <div class="d-flex flex-wrap aligh-items-center justify-content-around pt-5" >
+            <button id="produtos" class="btn btn-alt shadow-lg rounded m-3 text-light" style="background-color: #1d405c;">
+                <h3>Produtos</h3>
+                <h5>38 produtos cadastrados</h5>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ">
-                <li class="nav-item ">
-                    <a class="nav-link active link-light" href="#">Painel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active link-light" href="#">Produtos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active link-light" href="#">Funcionários</a>
-                </li>
-            </ul>
-            <div class="ml-auto">
-                <button type="button" class="btn" style="background: linear-gradient(#87CEEB, #ADD8E6);">
-                    <a href="./verificador/logout.php" class="text-decoration-none" style="color: #1d405c">Logout</a>
-                </button>
+            <button id="valores" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
+                <h3>Valor Total</h3>
+                <h5>R$17.680,30</h5>
+            </button>
+            <button id="funcionarios" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
+                <h3>Funcionários</h3>
+                <h5>17 funcionários cadastrados</h5>
+            </button>
+            <div class="d-flex flex-wrap aligh-items-center justify-content-around">
+            <button id="relatorio" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
+                <h3>Relatório</h3>
+                <h5>Categoria de produtos mais cadastradas</h5>
+            </button>
             </div>
         </div>
-        </nav>
-        <div class="d-flex flex-wrap aligh-items-center justify-content-between p-3 pt-5" >
-            <button id="produtos" class="btn btn-alt shadow-lg p-3 mb-5 rounded m-3" style="background: linear-gradient(#87CEEB, #ADD8E6);">
-                <h4 style="color: #1d405c">Produtos cadastrados: 178</h4>
-            </button>
-            <button id="valores" class="btn btn-alt shadow-lg p-3 mb-5 rounded m-3" style="background: linear-gradient(#87CEEB, #ADD8E6);">
-                <h4 style="color: #1d405c">Valor total: R$3.083,00</h4>
-            </button>
-            <button id="funcionarios" class="btn btn-alt shadow-lg p-3 mb-5 rounded m-3" style="background: linear-gradient(#87CEEB, #ADD8E6);">
-                <h4 style="color: #1d405c">Funcionários cadastrados: 38</h4>
-            </button>
-        </div>
     </div>
-
-    
 <!--JS-BOOSTRAP-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

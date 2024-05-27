@@ -15,6 +15,7 @@
             if($result -> rowCount() > 0){
                 $dado = $result -> fetch();
                 $_SESSION['login'] = $dado['login'];
+                $_SESSION['nome'] = $dado['nome'];
 
                 header('location: index.php');
             }else{
@@ -41,10 +42,11 @@
 <body style="background-color: #ADD8E6">
     <div class="container d-flex justify-items-center align-items-center">
         <div class="card shadow-lg p-3 mb-5 rounded mx-auto bg-light">
-            <div class="card-body align-self-center">
+            <div class="card-title">
                 <img src="./images/logo-certa.png" alt="" class="rounded mx-auto d-block logo">
-                <h5 class="text-center text-dark font-weight-light">Bem vindo a Farm+!</h5>
+                <h5 class="text-center text-dark font-weight-light">Bem vindo de volta!</h5></div>
 <!--FORM-->
+            <div class="card-body align-self-center">
                 <form action="" method="post" data-parsley-validate>
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control " name="login" required>
