@@ -35,8 +35,8 @@
                     <div class="form-floating mb-3">
                     <select name="funcao" id="funcao" class="form-control" required>
                         <option value=""></option>
-                        <option value="gerente">Gerente</option>
-                        <option value="atendente">Atendente</option>
+                        <option name="gerente" value="gerente">Gerente</option>
+                        <option name="atendente" value="atendente">Atendente</option>
                     </select>
                     <label for="funcao">Função <span style="color: #FF0000">*</span></label>
                     </div>

@@ -1,25 +1,28 @@
 <?php
-session_start();
-require 'conexao.php';
-if(!isset($_SESSION['login'])){
-    header('location:login.php');
-}
+    session_start();
+    require 'conexao.php';
+    if(!isset($_SESSION['login'])){
+        header('location: login.php');
+    }
+$sql = "SELECT * FROM produtos";
+$result = $conn -> prepare($sql);
+$result -> execute();
+$produtos = $result -> fetchALL(PDO:: FETCH_ASSOC);
 ?>
-<!--<a href="verificador/logout.php">Sair da conta</a>
-<h1>Seja Bem Vindo <?php /*echo $_SESSION['nome'] */?></h1>-->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel</title>
-<!--CSS-->
-    <link rel="stylesheet" href="./CSS/painel.css">
-<!--BOOSTRAP-->
+    <title>Produtos</title>
+    <!--BOOSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!--CSS-->
+<link rel="stylesheet" href="./CSS/painel.css">
 </head>
 <body>
-    <div class="container container-bg p-0">
+<div class="container container-bg p-0">
 <!--NAVBAR-->
         <nav class="navbar navbar-expand-sm d-flex aligh-items-center justify-items-center justify-content-start" style="background-color: #1d405c">
             <a class="navbar-brand mx-3" href="#">
@@ -47,33 +50,46 @@ if(!isset($_SESSION['login'])){
                 </div>
             </div>
         </nav>
-<!--DASHBOARD-->
-        <div class="d-flex">
-            <h1 class=" pt-3 mx-4 px-1">Bem-vindo, <?php echo $_SESSION['nome'];?>!</h1>
-        </div>
-        <hr>
-        <div class="d-flex flex-wrap aligh-items-center justify-content-around pt-5" >
-            <button id="produtos" class="btn btn-alt shadow-lg rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Produtos</h3>
-                <h5>38 produtos cadastrados</h5>
-            </button>
-            <button id="valores" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Valor Total</h3>
-                <h5>R$17.680,30</h5>
-            </button>
-            <button id="funcionarios" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Funcionários</h3>
-                <h5>17 funcionários cadastrados</h5>
-            </button>
-            <div class="d-flex flex-wrap aligh-items-center justify-content-around">
-            <button id="relatorio" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Relatório</h3>
-                <h5>Categoria de produtos mais cadastradas</h5>
-            </button>
-            </div>
-        </div>
-    </div>
+<!--TABLE-->
+<?php 
+if(count($produtos) > 0){
+?>
+<div class="d-flex">
+    <h2 class="px-3 m-1">Lista de Produtos</h2>
+    <a href="insertProd.php" class="btn m-1 justify-content-sm-end" style="background-color:#87CEEB;">Adicionar</a>
+</div>
+<div class="table-responsive-sm">
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Validade</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+        foreach($produtos as $produto){
+            echo "<tr>";
+            echo "<td>" . $produto['idprodutos'] . "</td>";
+            echo "<td>" . $produto['nome'] . "</td>";
+            echo "<td>" . $produto['validade'] . "</td>";
+            echo "<td>" . $produto['valor'] . "</td>";
+            echo "<td>" . $produto['quantidade'] . "</td>";
+            echo "<tr/>";
+        }
+    ?>
+  </tbody>
+</table>
+<?php
+}else{
+    echo "<h3 style='text-align: center;'>Nenhum produto cadastrado</h3>";
+}
+?>
+</div>
 <!--JS-BOOSTRAP-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
 </body>
 </html>
