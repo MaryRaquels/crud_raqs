@@ -4,10 +4,10 @@
     if(!isset($_SESSION['login'])){
         header('location: login.php');
     }
-$sql = "SELECT * FROM produtos";
+$sql = "SELECT * FROM funcionarios";
 $result = $conn -> prepare($sql);
 $result -> execute();
-$produtos = $result -> fetchALL(PDO:: FETCH_ASSOC);
+$funcionarios = $result -> fetchALL(PDO:: FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ $produtos = $result -> fetchALL(PDO:: FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Funcionários</title>
     <!--BOOSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <!--CSS-->
@@ -52,39 +52,39 @@ $produtos = $result -> fetchALL(PDO:: FETCH_ASSOC);
         </nav>
 <!--CABEÇALHO-->
 <?php 
-if(count($produtos) > 0){
+if(count($funcionarios) > 0){
 ?>
 <div class="d-flex align-items-center justify-content-center">
-    <h2 class="py-1">Lista de Produtos</h2>
+    <h2 class="py-1">Lista de Funcionários</h2>
 </div>
 <div class="d-flex align-items-center justify-content-end">
-    <a href="insertProd.php" class="btn my-2 mx-3" style="background-color:#87CEEB;">Adicionar</a>
+    <a href="insertFunc.php" class="btn my-2 mx-3" style="background-color:#87CEEB;">Adicionar</a>
     </div>
 
 <!--ALERT SUCESS-->
 <?php
     if(isset($_GET['sucesso'])):
-        $prodNome = $_GET['nome_produto'];
+        $funcNome = $_GET['nome_funcionario'];
 ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
             icon: 'success',
             title: 'Cadastro concluído',
-            text: 'Produto ' + '<?php echo $prodNome; ?>' + ' cadastrado com sucesso!'
+            text: 'Funcionário ' + '<?php echo $funcNome; ?>' + ' cadastrado com sucesso!'
         });
     </script>
 <?php endif; ?>
 <?php
     if(isset($_GET['delete'])):
-        $prodNome = $_GET['nome_produto'];
+        $funcNome = $_GET['nome_funcionário'];
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
             icon: 'error',
-            title: 'Produto excluído',
-            text: 'Produto ' + '<?php echo $prodNome; ?>' + ' excluído com sucesso!'
+            title: 'Funcionário excluído',
+            text: 'Funcionário ' + '<?php echo $funcNome; ?>' + ' excluído com sucesso!'
         });
     </script>
 <?php endif; ?>
@@ -95,25 +95,23 @@ if(count($produtos) > 0){
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Validade</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Quantidade</th>
+                <th scope="col">Login</th>
+                <th scope="col">Função</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
         <?php
-            foreach($produtos as $produto){
+            foreach($funcionarios as $funcionario){
                 echo "<tr>";
-                echo "<td>" . $produto['idprodutos'] . "</td>";
-                echo "<td>" . $produto['nome'] . "</td>";
-                echo "<td>" . $produto['validade'] . "</td>";
-                echo "<td>" . $produto['valor'] . "</td>";
-                echo "<td>" . $produto['quantidade'] . "</td>";
+                echo "<td>" . $funcionarios['idfuncionarios'] . "</td>";
+                echo "<td>" . $funcionarios['nome'] . "</td>";
+                echo "<td>" . $funcionarios['login'] . "</td>";
+                echo "<td>" . $funcionarios['funcao'] . "</td>";
                 echo "<td>
-                    <form method='post' action='./verificador/prodDel.php'>
-                        <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
-                        <input type='hidden' name='nome' value='" . $produto['nome'] . "' />
+                    <form method='post' action='./verificador/funcDel.php'>
+                        <input type='hidden' name='idfuncionarios' value='" . $funcionarios['idfuncionarios'] . "' />
+                        <input type='hidden' name='nome' value='" . $funcionarios['nome'] . "' />
                         <button class='btn btn-danger' type='submit'>Deletar</button>
                     </form>
                 </td>";
@@ -124,10 +122,10 @@ if(count($produtos) > 0){
     </table>
     <?php
         }else{
-            echo "<h3 style='text-align: center;'>Nenhum produto cadastrado</h3>";
+            echo "<h3 style='text-align: center;'>Nenhum funcionario cadastrado</h3>";
         ?>
             <div class="d-flex align-items-center justify-content-center py-2">
-                <a href="insertProd.php" class="btn m-1 justify-content-sm-end" style="background-color:#87CEEB;">Adicionar</a>
+                <a href="insertfunc.php" class="btn m-1 justify-content-sm-end" style="background-color:#87CEEB;">Adicionar</a>
             </div>
     <?php
         }
