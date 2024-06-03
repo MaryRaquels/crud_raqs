@@ -104,16 +104,22 @@ if(count($funcionarios) > 0){
         <?php
             foreach($funcionarios as $funcionario){
                 echo "<tr>";
-                echo "<td>" . $funcionarios['idfuncionarios'] . "</td>";
-                echo "<td>" . $funcionarios['nome'] . "</td>";
-                echo "<td>" . $funcionarios['login'] . "</td>";
-                echo "<td>" . $funcionarios['funcao'] . "</td>";
+                echo "<td>" . $funcionario['idfuncionarios'] . "</td>";
+                echo "<td>" . $funcionario['nome'] . "</td>";
+                echo "<td>" . $funcionario['login'] . "</td>";
+                echo "<td>" . $funcionario['funcao'] . "</td>";
                 echo "<td>
+                <div class='d-flex align-items-center justify-content-sm-end mx-1'>
                     <form method='post' action='./verificador/funcDel.php'>
-                        <input type='hidden' name='idfuncionarios' value='" . $funcionarios['idfuncionarios'] . "' />
-                        <input type='hidden' name='nome' value='" . $funcionarios['nome'] . "' />
+                        <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
+                        <input type='hidden' name='nome' value='" . $funcionario['nome'] . "' />
                         <button class='btn btn-danger' type='submit'>Deletar</button>
                     </form>
+                    <form method='post' action='funcFormUp.php'>
+                        <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
+                        <button class='btn btn-success mx-2' type='submit'>Atualizar</button>
+                    </form>
+                </div>
                 </td>";
                 echo "<tr/>";
             }

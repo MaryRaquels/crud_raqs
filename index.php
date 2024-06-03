@@ -37,7 +37,7 @@ if(!isset($_SESSION['login'])){
                         <a class="nav-link active link-light" href="produtos.php">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active link-light" href="#">Funcionários</a>
+                        <a class="nav-link active link-light" href="funcionarios.php">Funcionários</a>
                     </li>
                 </ul>
                 <div class="d-grid gap-4 d-sm-flex justify-content-sm-end collapse navbar-collapse" id="navbarNav">

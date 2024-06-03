@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Funcionários</title>
+    <title>Atualização de Dados</title>
 <!--CSS-->
 <link rel="stylesheet" href="./CSS/style.css">
 <!--BOOTSTRAP-->
@@ -14,22 +14,18 @@
         <div class="card shadow-lg p-3 mb-1 rounded mx-auto bg-light">
             <div class="card-title">
                 <img src="./images/logo-certa.png" alt="" class="rounded mx-auto d-block logo">
-                <h5 class="text-center text-dark font-weight-light">Cadastre o Funcionário desejado</h5>
+                <h5 class="text-center text-dark font-weight-light">Atualize o Dado desejado</h5>
             </div>
 <!--FORM-->
             <div class="card-body align-self-center w-100" >
-                <form action="./verificador/funcCad.php" method="post"  data-parsley-validate>
+                <form action="./verificador/funcUp.php" method="post"  data-parsley-validate>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control " name="nome" required>
                         <label for="nome">Nome <span style="color: #FF0000">*</span></label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control " name="login" required>
-                        <label for="login">Login <span style="color: #FF0000">*</span></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control " name="senha" required>
-                        <label for="senha">Senha <span style="color: #FF0000">*</span></label>
+                        <input type="email" class="form-control " name="validade" required>
+                        <label for="validade">Login <span style="color: #FF0000">*</span></label>
                     </div>
                     <div class="form-floating mb-3">
                         <select name="funcao" id="funcao" class="form-control" required>
