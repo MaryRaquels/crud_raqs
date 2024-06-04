@@ -54,21 +54,52 @@ if(!isset($_SESSION['login'])){
         <hr>
         <div class="d-flex flex-wrap aligh-items-center justify-content-around pt-5" >
             <button id="produtos" class="btn btn-alt shadow-lg rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Produtos</h3>
-                <h5>38 produtos cadastrados</h5>
+                <h2>Produtos</h32>
+                <h4>
+                    <?php 
+                        require 'conexao.php';
+                        $sql = "SELECT COUNT(*) as total FROM produtos";
+                        $result = $conn->prepare($sql);
+                        $result-> execute();
+                        $total = $result-> fetchcolumn();
+                     
+                        echo "Total de produtos: " . ($total);
+                    ?>
+                </h4>
             </button>
             <button id="valores" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Valor Total</h3>
-                <h5>R$17.680,30</h5>
+                <h2>Valor Total</h2>
+                <h4>
+                    <?php 
+                        require 'conexao.php';
+                        $sql = "SELECT SUM(valor) as total FROM produtos";
+                        $result = $conn->prepare($sql);
+                        $result-> execute();
+                        $totalvalor = $result-> fetchcolumn();
+                     
+                        echo "R$ " . ($totalvalor);
+                    ?>
+                </h4>
             </button>
             <button id="funcionarios" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Funcionários</h3>
-                <h5>17 funcionários cadastrados</h5>
+                <h2>Funcionários</h2>
+                <h4>
+                    <?php 
+                        require 'conexao.php';
+                        $sql = "SELECT COUNT(*) as total FROM funcionarios";
+                        $result = $conn->prepare($sql);
+                        $result-> execute();
+                        $totalfunc = $result-> fetchcolumn();
+                     
+                        echo "Total de funcionários: " . ($totalfunc);
+                    ?>
+                </h4>
             </button>
             <div class="d-flex flex-wrap aligh-items-center justify-content-around">
             <button id="relatorio" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
-                <h3>Relatório</h3>
+                <h2>Relatório</h2>
                 <h5>Categoria de produtos mais cadastradas</h5>
+                <h5><a href="join.php" class="link link-light text-decoration-none">Ver Mais</a></h5>
             </button>
             </div>
         </div>
