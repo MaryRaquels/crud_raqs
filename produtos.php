@@ -89,8 +89,8 @@ if(count($produtos) > 0){
     </script>
 <?php endif; ?>
 <!--TABLE-->
-<div class="table-responsive-sm ">
-    <table class="table table-hover m-0 p-3">
+<div class="px-3 ">
+    <table class="table table-responsive table-hover m-0 p-3 table-bordered ">
         <thead class="table-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -119,7 +119,7 @@ if(count($produtos) > 0){
                     </form>
                     <form method='post' action='prodFormUp.php'>
                         <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
-                        <button class='btn btn-success mx-2' type='submit'>Atualizar</button>
+                        <button class='btn btn-success mx-2 ' type='submit'>Atualizar</button>
                     </form>
                 </div>
                 </td>";

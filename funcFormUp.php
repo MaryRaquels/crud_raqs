@@ -9,7 +9,7 @@
 <!--BOOTSTRAP-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-color:#ADD8E6">
 <div class="container d-flex justify-items-center align-items-center">
         <div class="card shadow-lg p-3 mb-1 rounded mx-auto bg-light">
             <div class="card-title">
