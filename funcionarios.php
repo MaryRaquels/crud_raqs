@@ -21,7 +21,7 @@ $funcionarios = $result -> fetchALL(PDO:: FETCH_ASSOC);
 <!--CSS-->
 <link rel="stylesheet" href="./CSS/painel.css">
 </head>
-<body>
+<body >
 <div class="container container-bg p-0">
 <!--NAVBAR-->
         <nav class="navbar navbar-expand-sm d-flex aligh-items-center justify-items-center justify-content-start" style="background-color: #1d405c">
@@ -78,15 +78,28 @@ if(count($funcionarios) > 0){
 <?php endif; ?>
 <?php
     if(isset($_GET['delete'])):
-        $funcNome = $_GET['nome_funcionário'];
+        $funcNome = $_GET['nome_funcionario'];
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
-            icon: 'error',
-            title: 'Funcionário excluído',
-            text: 'Funcionário ' + '<?php echo $funcNome; ?>' + ' excluído com sucesso!'
+            title: "Você tem certeza disso?",
+            text: "Essa ação não é reversível!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim, quero deletar!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Funcionário deletado com sucesso!",
+                    text: "Funcionário " + "<?php echo $funcNome; ?>" + " deletado com sucesso",
+                    icon: "success"
+                });
+            }
         });
+        
     </script>
 <?php endif; ?>
 <!--TABLE-->

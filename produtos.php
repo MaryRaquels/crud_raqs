@@ -61,7 +61,7 @@ if(count($produtos) > 0){
     <a href="insertProd.php" class="btn my-2 mx-3" style="background-color:#87CEEB;">Adicionar</a>
     </div>
 
-<!--ALERT SUCESS-->
+<!--ALERT SUCCESS-->
 <?php
     if(isset($_GET['sucesso'])):
         $prodNome = $_GET['nome_produto'];
@@ -75,6 +75,7 @@ if(count($produtos) > 0){
         });
     </script>
 <?php endif; ?>
+<!--ALERT DELETE-->
 <?php
     if(isset($_GET['delete'])):
         $prodNome = $_GET['nome_produto'];
@@ -82,9 +83,21 @@ if(count($produtos) > 0){
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
-            icon: 'error',
-            title: 'Produto excluído',
-            text: 'Produto ' + '<?php echo $prodNome; ?>' + ' excluído com sucesso!'
+            title: "Você tem certeza disso?",
+            text: "Essa ação não é reversível!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim, quero deletar!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                title: "Produto deletado com sucesso!",
+                text: "Produto " + "<?php echo $prodNome?>" + " foi deletado",
+                icon: "success"
+                });
+             }
         });
     </script>
 <?php endif; ?>

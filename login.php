@@ -18,6 +18,8 @@
                 $_SESSION['nome'] = $dado['nome'];
 
                 header('location: index.php');
+            }elseif(empty($_POST['login']) && empty($_POST['senha'])){
+                $vazio = 'Confira se preencheu todos os campos para acessar nosso sistema!';
             }else{
                 $erro = 'Login ou senha incorretos, tente novamente ou faça seu cadastro no nosso sistema!';
             }
@@ -49,11 +51,11 @@
             <div class="card-body align-self-center">
                 <form action="" method="post" data-parsley-validate>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control " name="login" required>
+                        <input type="email" class="form-control " name="login" >
                         <label for="login">Login <span style="color: #FF0000">*</span></label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control " name="senha" required>
+                        <input type="password" class="form-control " name="senha">
                         <label for="senha">Senha <span style="color: #FF0000">*</span></label>
                     </div>
                     <input type="submit" value="Enviar" name="submit" class="btn w-100 text-light" style="background-color: #1d405c">
@@ -73,6 +75,17 @@
                 icon: 'error',
                 title: 'Ops! Algo deu errado',
                 text: '<?= $erro ?>'
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if(isset($vazio)): ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Ops! Algo deu errado',
+                text: '<?= $vazio ?>'
             });
         </script>
     <?php endif; ?>

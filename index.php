@@ -41,15 +41,15 @@ if(!isset($_SESSION['login'])){
                     </li>
                 </ul>
                 <div class="d-grid gap-4 d-sm-flex justify-content-sm-end collapse navbar-collapse" id="navbarNav">
-                    <button class="btn me-sm-4" type="button" style="background: #87CEEB;">
-                        <a class="text-decoration-none link-dark" href="./verificador/logout.php">Logout</a>
+                    <button class="btn me-sm-5" type="button" style="background: #87CEEB;">
+                        <a class="text-decoration-none link-dark px-1" href="./verificador/logout.php">Logout</a>
                     </button>
                 </div>
             </div>
         </nav>
 <!--DASHBOARD-->
         <div class="d-flex">
-            <h1 class=" pt-3 mx-4 px-1">Bem-vindo, <?php echo $_SESSION['nome'];?>!</h1>
+            <h1 class=" pt-3 mx-4 px-2">Bem-vindo, <?php echo $_SESSION['nome'];?>!</h1>
         </div>
         <hr>
         <div class="d-flex flex-wrap aligh-items-center justify-content-around pt-5" >
@@ -78,6 +78,9 @@ if(!isset($_SESSION['login'])){
                         $totalvalor = $result-> fetchcolumn();
                      
                         echo "R$ " . ($totalvalor);
+                        if($totalvalor == 0){
+                            echo '0,00';
+                        }
                     ?>
                 </h4>
             </button>
