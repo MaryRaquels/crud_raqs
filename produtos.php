@@ -58,8 +58,42 @@ if(count($produtos) > 0){
     <h2 class="py-1">Lista de Produtos</h2>
 </div>
 <div class="d-flex align-items-center justify-content-end">
-    <a href="insertProd.php" class="btn my-2 mx-3" style="background-color:#87CEEB;">Adicionar</a>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color:#87CEEB">
+        Adicionar
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4" id="staticBackdropLabel">Atualize o produto desejado</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="./verificador/prodUp.php" method="post"  data-parsley-validate>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control " name="nome" required>
+                            <label for="nome">Nome <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control " name="validade" required>
+                            <label for="validade">Validade <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control " name="valor" required>
+                            <label for="valor">Valor <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control " name="quantidade"  required>
+                            <label for="quantidade">Quantidade <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <input type="submit" value="Atualizar" name="submit" class="btn w-100 text-light my-2" style="background-color: #1d405c">
+                        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
 <!--ALERT SUCCESS-->
 <?php
@@ -74,7 +108,7 @@ if(count($produtos) > 0){
             text: 'Produto ' + '<?php echo $prodNome; ?>' + ' cadastrado com sucesso!'
         });
     </script>
-<?php endif; ?>
+<?php endif;?>
 <!--ALERT DELETE-->
 <?php
     if(isset($_GET['delete'])):
@@ -145,8 +179,41 @@ if(count($produtos) > 0){
         }else{
             echo "<h3 style='text-align: center;'>Nenhum produto cadastrado</h3>";
         ?>
-            <div class="d-flex align-items-center justify-content-center py-2">
-                <a href="insertProd.php" class="btn m-1 justify-content-sm-end" style="background-color:#87CEEB;">Adicionar</a>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color:#87CEEB">
+                Adicionar
+            </button>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4" id="staticBackdropLabel">Adicione o produto desejado</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="./verificador/prodCad.php" method="post" data-parsley-validate>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control " name="nome" required>
+                                    <label for="nome">Nome <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="date" class="form-control " name="validade" required>
+                                    <label for="validade">Validade <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control " name="valor" required>
+                                    <label for="valor">Valor <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control " name="quantidade"  required>
+                                    <label for="quantidade">Quantidade <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <input type="submit" value="Cadastrar" name="submit" class="btn w-100 text-light my-2" style="background-color: #1d405c">
+                                <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
     <?php
         }
