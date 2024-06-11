@@ -109,5 +109,9 @@ if(!isset($_SESSION['login'])){
     </div>
 <!--JS-BOOSTRAP-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--PARSLEY-->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/parsleyjs/dist/parsley.min.js"></script>
+    <script src="node_modules/parsleyjs/dist/i18n/pt-br.js"></script>
 </body>
 </html>

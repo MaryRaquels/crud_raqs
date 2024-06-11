@@ -57,9 +57,47 @@ if(count($funcionarios) > 0){
 <div class="d-flex align-items-center justify-content-center">
     <h2 class="py-1">Lista de Funcionários</h2>
 </div>
-<div class="d-flex align-items-center justify-content-end">
-    <a href="insertFunc.php" class="btn my-2 mx-3" style="background-color:#87CEEB;">Adicionar</a>
+<div class="d-flex align-items-center justify-content-end mx-3 my-2">
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color:#87CEEB">
+        Adicionar
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4" id="staticBackdropLabel">Adicicone o dado desejado</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="./verificador/prodUp.php" method="post" data-parsley-validate>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control " name="nome" required>
+                            <label for="nome">Nome <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control " name="login" required>
+                            <label for="login">Login <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control " name="senha" required>
+                            <label for="senha">Senha <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select name="funcao" id="funcao" class="form-control" required>
+                                <option value=""></option>
+                                <option name="gerente" value="gerente">Gerente</option>
+                                <option name="atendente" value="atendente">Atendente</option>
+                            </select>
+                            <label for="funcao">Função <span style="color: #FF0000">*</span></label>
+                        </div>
+                        <input type="submit" value="Atualizar" name="submit" class="btn w-100 text-light my-2" style="background-color: #1d405c">
+                        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
 <!--ALERT SUCESS-->
 <?php
@@ -103,7 +141,7 @@ if(count($funcionarios) > 0){
     </script>
 <?php endif; ?>
 <!--TABLE-->
-<div class="p-3 ">
+<div class="px-3 ">
     <table class="table table-hover table-responsive table-bordered m-0 p-3">
         <thead class="table-dark">
             <tr>
@@ -131,7 +169,40 @@ if(count($funcionarios) > 0){
                     </form>
                     <form method='post' action='funcFormUp.php'>
                         <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
-                        <button class='btn btn-success mx-2' type='submit'>Atualizar</button>
+                        <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+                            Atualizar
+                        </button>
+                        <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                        <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o produtoçg8p78p desejado</h1>
+                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <div class='form-floating mb-3'>
+                                            <input type='text' class='form-control ' name='nome' required>
+                                            <label for='nome'>Nome <span style='color: #FF0000'>*</span></label>
+                                        </div>
+                                        <div class='form-floating mb-3'>
+                                            <input type='date' class='form-control' name='validade' required>
+                                            <label for='validade'>Validade <span style='color: #FF0000'>*</span></label>
+                                        </div>
+                                        <div class='form-floating mb-3'>
+                                            <input type='number' class='form-control' name='valor' required>
+                                            <label for='valor'>Valor <span style='color: #FF0000'>*</span></label>
+                                        </div>
+                                        <div class='form-floating mb-3'>
+                                            <input type='number' class='form-control' name='quantidade'  required>
+                                            <label for='quantidade'>Quantidade <span style='color: #FF0000'>*</span></label>
+                                        </div>
+                                        <input type='submit' value='Cadastrar' name='submit' class='btn w-100 text-light my-2' style='background-color: #1d405c'>
+                                        <button type='button' class='btn btn-secondary w-100' data-bs-dismiss='modal'>Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     </form>
                 </div>
                 </td>";
@@ -153,5 +224,9 @@ if(count($funcionarios) > 0){
 </div>
 <!--JS-BOOSTRAP-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+<!--PARSLEY-->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/parsleyjs/dist/parsley.min.js"></script>
+    <script src="node_modules/parsleyjs/dist/i18n/pt-br.js"></script>
 </body>
 </html>
