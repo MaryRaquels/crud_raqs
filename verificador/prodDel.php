@@ -5,7 +5,7 @@
         $idprodutos = $_POST['idprodutos'];
 
         $sql = "DELETE FROM produtos WHERE idprodutos = :idprodutos";
-         $result = $conn -> prepare($sql);
+        $result = $conn -> prepare($sql);
         $result -> bindValue('idprodutos', $idprodutos);
         $result -> execute();
 
