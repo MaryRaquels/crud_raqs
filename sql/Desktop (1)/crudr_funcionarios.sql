@@ -27,9 +27,9 @@ CREATE TABLE `funcionarios` (
   `nome` varchar(145) NOT NULL,
   `login` varchar(45) NOT NULL,
   `senha` varchar(15) NOT NULL,
-  `funcao` varchar(45) NOT NULL,
+  `funcao` varchar(15) NOT NULL,
   PRIMARY KEY (`idfuncionarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `funcionarios` (
 
 LOCK TABLES `funcionarios` WRITE;
 /*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
-INSERT INTO `funcionarios` VALUES (1,'Maria Lima','maria@maria.com','2323','gerente'),(2,'alavaro ferreira da silva junio','alavaro@junio.com','1708','gerente'),(3,'Maria Lima','maria@maria.com','0803','atendente'),(4,'ruantk','tk@gmail.com','07','atendente'),(5,'Lulu da Massa','lulu@gmail.com','0606','atendente'),(6,'Ribamar José Lima','ribas@gmail.com','1907','atendente'),(7,'betbet','bet@gmail.com','23','atendente');
+INSERT INTO `funcionarios` VALUES (1,'Maria Lima','maria@maria.com','2323','gerente'),(2,'alavaro ferreira da silva junio','alavaro@junio.com','1708','atendente'),(3,'Maria Lima','maria@maria.com','0803','atendente'),(4,'ruantk','tk@gmail.com','07','atendente'),(5,'Lulu da Massa','lulu@gmail.com','0606','atendente'),(6,'Ribamar José Lima','ribas@gmail.com','1907','atendente'),(10,'Renan Moreira','renan@gmail.com','ceci33','atendente'),(12,'the master of toq 244','putifero244moedas@gmail.com','askl','gerente'),(13,'João Ferreira Lima','joao@gmail.com','333','atendente'),(14,'Bisonhe da Masse','bisonhe@gmail.com','0808','atendente');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-27 12:52:43
+-- Dump completed on 2024-06-15 19:06:18

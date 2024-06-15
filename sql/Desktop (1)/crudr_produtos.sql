@@ -26,10 +26,10 @@ CREATE TABLE `produtos` (
   `idprodutos` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(145) NOT NULL,
   `validade` date NOT NULL,
-  `valor` int(11) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
   `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`idprodutos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (18,'Dipirona','2035-03-12',7.00,1290),(19,'Decongex','2034-09-23',16.00,130),(20,'Esmalte Risqué','2026-07-06',8.00,120),(21,'Esmalte Impala','2025-03-13',5.00,290),(22,'Máscara Descartável','2025-03-12',14.00,370),(23,'Batom Boca Rosa Matte','2045-09-15',36.00,100),(24,'Sabonete Granado Baby','2025-05-08',19.00,450);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-27 12:52:43
+-- Dump completed on 2024-06-15 19:06:18

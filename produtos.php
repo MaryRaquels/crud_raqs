@@ -117,21 +117,9 @@ if(count($produtos) > 0){
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
-            title: "Você tem certeza disso?",
-            text: "Essa ação não é reversível!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Sim, quero deletar!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                title: "Produto deletado com sucesso!",
-                text: "Produto " + "<?php echo $prodNome?>" + " foi deletado",
-                icon: "success"
-                });
-             }
+            icon: 'error',
+            title: 'Deletado!',
+            text: 'Produto ' + '<?php echo $prodNome; ?>' + ' deletado com sucesso!'
         });
     </script>
 <?php endif; ?>
@@ -151,6 +139,7 @@ if(count($produtos) > 0){
         <tbody>
         <?php
             foreach($produtos as $produto){
+                $modalId = "Backdrop" . $produto['idprodutos'];
                 echo "<tr>";
                 echo "<td>" . $produto['idprodutos'] . "</td>";
                 echo "<td>" . $produto['nome'] . "</td>";
@@ -164,19 +153,20 @@ if(count($produtos) > 0){
                         <input type='hidden' name='nome' value='" . $produto['nome'] . "' />
                         <button class='btn btn-danger mx-2' type='submit'>Deletar</button>
                     </form>
-                    <form method='post' action='./verificador/prodUp.php'>
-                        <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
-                        <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#Backdrop'>
-                            Atualizar
-                        </button>
-                        <div class='modal fade' id='Backdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                            <div class='modal-dialog modal-dialog-centered'>
-                                <div class='modal-content'>
-                                    <div class='modal-header'>
-                                        <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o produto desejado</h1>
-                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                    </div>
-                                    <div class='modal-body'>
+                    
+                    <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'>
+                        Atualizar
+                    </button>
+                    <div class='modal fade' id='" . $modalId . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o produto desejado</h1>
+                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                </div>
+                                <div class='modal-body'>
+                                    <form method='post' action='./verificador/prodUp.php'>
+                                        <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
                                         <div class='form-floating mb-3'>
                                             <input type='text' class='form-control' value='". $produto['nome'] ."' name='nome' required>
                                             <label for='nome'>Nome <span style='color: #FF0000'>*</span></label>
@@ -195,16 +185,16 @@ if(count($produtos) > 0){
                                         </div>
                                         <input type='submit' value='Atualizar' name='submit' class='btn w-100 text-light my-2' style='background-color: #1d405c'>
                                         <button type='button' class='btn btn-secondary w-100' data-bs-dismiss='modal'>Cancelar</button>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 </td>";
                 echo "<tr/>";
             }
-        ?>      
+        ?>     
                         
         </tbody>
     </table>

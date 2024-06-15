@@ -114,6 +114,7 @@ if(count($funcionarios) > 0){
         });
     </script>
 <?php endif; ?>
+<!--ALERT DELETE-->
 <?php
     if(isset($_GET['delete'])):
         $funcNome = $_GET['nome_funcionario'];
@@ -121,23 +122,10 @@ if(count($funcionarios) > 0){
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
-            title: "Você tem certeza disso?",
-            text: "Essa ação não é reversível!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Sim, quero deletar!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Funcionário deletado com sucesso!",
-                    text: "Funcionário " + "<?php echo $funcNome; ?>" + " deletado com sucesso",
-                    icon: "success"
-                });
-            }
+            icon: 'error',
+            title: 'Deletado!',
+            text: 'Funcionário ' + '<?php echo $funcNome; ?>' + ' deletado com sucesso!'
         });
-        
     </script>
 <?php endif; ?>
 <!--TABLE-->
@@ -148,6 +136,7 @@ if(count($funcionarios) > 0){
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Login</th>
+                <th scope="col">Senha</th>
                 <th scope="col">Função</th>
                 <th scope="col"></th>
             </tr>
@@ -155,55 +144,61 @@ if(count($funcionarios) > 0){
         <tbody>
         <?php
             foreach($funcionarios as $funcionario){
+                $modalId = "Backdrop" . $funcionario['idfuncionarios'];
                 echo "<tr>";
                 echo "<td>" . $funcionario['idfuncionarios'] . "</td>";
                 echo "<td>" . $funcionario['nome'] . "</td>";
                 echo "<td>" . $funcionario['login'] . "</td>";
+                echo "<td>" . $funcionario['senha'] . "</td>";
                 echo "<td>" . $funcionario['funcao'] . "</td>";
                 echo "<td>
                 <div class='d-flex align-items-center justify-content-sm-end mx-1'>
                     <form method='post' action='./verificador/funcDel.php'>
-                        <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
+                        <input type='hidden' name='idprodutos' value='" . $funcionario['idfuncionarios'] . "' />
                         <input type='hidden' name='nome' value='" . $funcionario['nome'] . "' />
-                        <button class='btn btn-danger' type='submit' name='confirm'>Deletar</button>
+                        <button class='btn btn-danger mx-2' type='submit'>Deletar</button>
                     </form>
-                    <form method='post' action='funcFormUp.php'>
-                        <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
-                        <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
-                            Atualizar
-                        </button>
-                        <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                            <div class='modal-dialog modal-dialog-centered'>
-                                <div class='modal-content'>
-                                    <div class='modal-header'>
-                                        <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o produtoçg8p78p desejado</h1>
-                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                    </div>
-                                    <div class='modal-body'>
+                    
+                    <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'>
+                        Atualizar
+                    </button>
+                    <div class='modal fade' id='" . $modalId . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o produto desejado</h1>
+                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                </div>
+                                <div class='modal-body'>
+                                    <form method='post' action='./verificador/funcUp.php'>
+                                        <input type='hidden' name='idprodutos' value='" . $funcionario['idfuncionarios'] . "' />
                                         <div class='form-floating mb-3'>
-                                            <input type='text' class='form-control ' name='nome' required>
+                                            <input type='text' class='form-control' value='". $funcionario['nome'] ."' name='nome' required>
                                             <label for='nome'>Nome <span style='color: #FF0000'>*</span></label>
                                         </div>
                                         <div class='form-floating mb-3'>
-                                            <input type='date' class='form-control' name='validade' required>
-                                            <label for='validade'>Validade <span style='color: #FF0000'>*</span></label>
+                                            <input type='email' class='form-control' value='". $funcionario['login'] ."' name='login' required>
+                                            <label for='login'>Login <span style='color: #FF0000'>*</span></label>
                                         </div>
                                         <div class='form-floating mb-3'>
-                                            <input type='number' class='form-control' name='valor' required>
-                                            <label for='valor'>Valor <span style='color: #FF0000'>*</span></label>
+                                            <input type='password' class='form-control' value='". $funcionario['senha'] ."' name='senha' required>
+                                            <label for='senha'>Senha <span style='color: #FF0000'>*</span></label>
                                         </div>
-                                        <div class='form-floating mb-3'>
-                                            <input type='number' class='form-control' name='quantidade'  required>
-                                            <label for='quantidade'>Quantidade <span style='color: #FF0000'>*</span></label>
+                                        <div class'form-floating mb-3'>
+                                            <label for='funcao'>Função <span style='color: #FF0000'>*</span></label>
+                                            <select name='funcao' id='funcao' class='form-control' required>
+                                                <option value=''></option>
+                                                <option name='gerente' value='gerente'>Gerente</option>
+                                                <option name='atendente' value='atendente'>Atendente</option>
+                                            </select>
                                         </div>
-                                        <input type='submit' value='Cadastrar' name='submit' class='btn w-100 text-light my-2' style='background-color: #1d405c'>
+                                        <input type='submit' value='Atualizar' name='submit' class='btn w-100 text-light my-2' style='background-color: #1d405c'>
                                         <button type='button' class='btn btn-secondary w-100' data-bs-dismiss='modal'>Cancelar</button>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                    </form>
+                    </div>
                 </div>
                 </td>";
                 echo "<tr/>";
