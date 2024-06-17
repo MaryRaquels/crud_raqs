@@ -208,10 +208,48 @@ if(count($funcionarios) > 0){
     </table>
     <?php
         }else{
-            echo "<h3 style='text-align: center;'>Nenhum funcionario cadastrado</h3>";
+            echo "<h3 style='text-align: center;'>Nenhum funcionário cadastrado</h3>";
         ?>
-            <div class="d-flex align-items-center justify-content-center py-2">
-                <a href="insertfunc.php" class="btn m-1 justify-content-sm-end" style="background-color:#87CEEB;">Adicionar</a>
+            <div class="d-flex align-items-center justify-content-center">
+            <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color:#87CEEB">
+                Adicionar
+            </button>
+        </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4" id="staticBackdropLabel">Adicione o funcionário desejado</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="./verificador/funcCad.php" method="post" data-parsley-validate>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control " name="nome" required>
+                                    <label for="nome">Nome <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control " name="login" required>
+                                    <label for="login">Login <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control " name="senha" required>
+                                    <label for="senha">Senha <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select name="funcao" id="funcao" class="form-control" required>
+                                        <option value=""></option>
+                                        <option name="gerente" value="gerente">Gerente</option>
+                                        <option name="atendente" value="atendente">Atendente</option>
+                                    </select>
+                                    <label for="funcao">Função <span style="color: #FF0000">*</span></label>
+                                </div>
+                                <input type="submit" value="Cadastrar" name="submit" class="btn w-100 text-light my-2" style="background-color: #1d405c">
+                                <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
     <?php
         }

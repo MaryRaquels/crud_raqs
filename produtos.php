@@ -4,10 +4,14 @@
     if(!isset($_SESSION['login'])){
         header('location: login.php');
     }
-$sql = "SELECT * FROM produtos";
-$result = $conn -> prepare($sql);
-$result -> execute();
-$produtos = $result -> fetchALL(PDO:: FETCH_ASSOC);
+$sql = "SELECT p.idprodutos, p.nome AS nome_produto, p.validade, p.valor, p.quantidade, c.nomecategoria
+FROM produtos p
+INNER JOIN categoria c ON p.idcategoria = c.idcategoria";
+
+$result = $conn->prepare($sql);
+$result->execute();
+$produtos = $result->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -133,6 +137,7 @@ if(count($produtos) > 0){
                 <th scope="col">Validade</th>
                 <th scope="col">Valor</th>
                 <th scope="col">Quantidade</th>
+                <th scope="col">Categoria</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -142,15 +147,16 @@ if(count($produtos) > 0){
                 $modalId = "Backdrop" . $produto['idprodutos'];
                 echo "<tr>";
                 echo "<td>" . $produto['idprodutos'] . "</td>";
-                echo "<td>" . $produto['nome'] . "</td>";
+                echo "<td>" . $produto['nome_produto'] . "</td>";
                 echo "<td>" . $produto['validade'] . "</td>";
                 echo "<td>" . $produto['valor'] . "</td>";
                 echo "<td>" . $produto['quantidade'] . "</td>";
+                echo "<td>" . $produto['nomecategoria'] . "</td>";
                 echo "<td>
                 <div class='d-flex align-items-center justify-content-sm-end mx-1'>
                     <form method='post' action='./verificador/prodDel.php'>
                         <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
-                        <input type='hidden' name='nome' value='" . $produto['nome'] . "' />
+                        <input type='hidden' name='nome' value='" . $produto['nome_produto'] . "' />
                         <button class='btn btn-danger mx-2' type='submit'>Deletar</button>
                     </form>
                     
@@ -168,7 +174,7 @@ if(count($produtos) > 0){
                                     <form method='post' action='./verificador/prodUp.php'>
                                         <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
                                         <div class='form-floating mb-3'>
-                                            <input type='text' class='form-control' value='". $produto['nome'] ."' name='nome' required>
+                                            <input type='text' class='form-control' value='". $produto['nome_produto'] ."' name='nome' required>
                                             <label for='nome'>Nome <span style='color: #FF0000'>*</span></label>
                                         </div>
                                         <div class='form-floating mb-3'>
@@ -182,6 +188,16 @@ if(count($produtos) > 0){
                                         <div class='form-floating mb-3'>
                                             <input type='number' class='form-control' value='". $produto['quantidade'] ."' name='quantidade'  required>
                                             <label for='quantidade'>Quantidade <span style='color: #FF0000'>*</span></label>
+                                        </div>
+                                        <div class'form-floating mb-3'>
+                                            <select name='categoria' value='" . $produto['nomecategoria'] . "' class='form-control' required>
+                                                <option value=''></option>
+                                                <option name='medicamentos' value='medicamentos'>Medicamentos</option>
+                                                <option name='higiene pessoal' value='higiene pessoal'>Higiene Pessoal</option>
+                                                <option name='cuidados com a pele' value='cuidados com a pele'>Cuidados com a Pele</option>
+                                                <option name='cuidados capilares' value='cuidados capilares'>Cuidados Capilares</option>
+                                                <label for='categoria'>Categoria <span style='color: #FF0000'>*</span></label>
+                                            </select>
                                         </div>
                                         <input type='submit' value='Atualizar' name='submit' class='btn w-100 text-light my-2' style='background-color: #1d405c'>
                                         <button type='button' class='btn btn-secondary w-100' data-bs-dismiss='modal'>Cancelar</button>
