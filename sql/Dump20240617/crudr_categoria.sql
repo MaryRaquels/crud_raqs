@@ -16,30 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `funcionarios`
+-- Table structure for table `categoria`
 --
 
-DROP TABLE IF EXISTS `funcionarios`;
+DROP TABLE IF EXISTS `categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `funcionarios` (
-  `idfuncionarios` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(145) NOT NULL,
-  `login` varchar(45) NOT NULL,
-  `senha` varchar(15) NOT NULL,
-  `funcao` varchar(15) NOT NULL,
-  PRIMARY KEY (`idfuncionarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `categoria` (
+  `idcategoria` int(11) NOT NULL AUTO_INCREMENT,
+  `nomecategoria` varchar(45) NOT NULL,
+  PRIMARY KEY (`idcategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `funcionarios`
+-- Dumping data for table `categoria`
 --
 
-LOCK TABLES `funcionarios` WRITE;
-/*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
-INSERT INTO `funcionarios` VALUES (1,'Maria Lima','maria@maria.com','2323','gerente'),(2,'alavaro ferreira da silva junio','alavaro@junio.com','1708','atendente'),(3,'Maria Lima','maria@maria.com','0803','atendente'),(4,'ruantk','tk@gmail.com','07','atendente'),(5,'Lulu da Massa','lulu@gmail.com','0606','atendente'),(6,'Ribamar José Lima','ribas@gmail.com','1907','atendente'),(10,'Renan Moreira','renan@gmail.com','ceci33','atendente'),(12,'the master of toq 244','putifero244moedas@gmail.com','askl','gerente'),(13,'João Ferreira Lima','joao@gmail.com','333','atendente'),(14,'Bisonhe da Masse','bisonhe@gmail.com','0808','atendente');
-/*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
+LOCK TABLES `categoria` WRITE;
+/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (1,'Medicamentos'),(2,'Higiene Pessoal'),(3,'Cuidados com a Pele'),(4,'Cuidados Capilares');
+/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-15 19:06:18
+-- Dump completed on 2024-06-17 21:29:12

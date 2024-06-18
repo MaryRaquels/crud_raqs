@@ -28,8 +28,11 @@ CREATE TABLE `produtos` (
   `validade` date NOT NULL,
   `valor` decimal(10,2) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  PRIMARY KEY (`idprodutos`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `idcategoria` int(11) NOT NULL,
+  PRIMARY KEY (`idprodutos`),
+  KEY `produtos_ibfk_1` (`idcategoria`),
+  CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +41,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (18,'Dipirona','2035-03-12',7.00,1290),(19,'Decongex','2034-09-23',16.00,130),(20,'Esmalte Risqué','2026-07-06',8.00,120),(21,'Esmalte Impala','2025-03-13',5.00,290),(22,'Máscara Descartável','2025-03-12',14.00,370),(23,'Batom Boca Rosa Matte','2045-09-15',36.00,100),(24,'Sabonete Granado Baby','2025-05-08',19.00,450);
+INSERT INTO `produtos` VALUES (1,'Paracetamol 500mg','2023-12-31',10.50,50,1),(2,'Dipirona 50mg/mL','2023-12-31',8.00,30,1),(3,'Sabonete Líquido Neutro','2023-12-31',5.90,100,2),(4,'Protetor Solar FPS 80','2023-12-31',25.00,20,3),(7,'Condicionador Elseve','2304-09-12',34.00,12,4);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-15 19:06:18
+-- Dump completed on 2024-06-17 21:29:12

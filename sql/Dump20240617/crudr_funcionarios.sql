@@ -16,26 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categoria`
+-- Table structure for table `funcionarios`
 --
 
-DROP TABLE IF EXISTS `categoria`;
+DROP TABLE IF EXISTS `funcionarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categoria` (
-  `idcategoria` int(11) NOT NULL,
-  `nomecategoria` varchar(45) NOT NULL,
-  PRIMARY KEY (`idcategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `funcionarios` (
+  `idfuncionarios` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(145) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  `senha` varchar(15) NOT NULL,
+  `funcao` varchar(45) NOT NULL,
+  PRIMARY KEY (`idfuncionarios`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categoria`
+-- Dumping data for table `funcionarios`
 --
 
-LOCK TABLES `categoria` WRITE;
-/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+LOCK TABLES `funcionarios` WRITE;
+/*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
+INSERT INTO `funcionarios` VALUES (8,'Maria Lima','maria@maria.com','2323','gerente'),(9,'ruantk','tk@gmail.com','0707','atendente'),(10,'Álvaro Júnior','alvaro@junior.com','1708','atendente'),(11,'Hugo Régis','hugo@gmail.com','top1doroblox','atendente'),(12,'Renan Moreira','renan@gmail.com','devporamor','atendente');
+/*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-15 19:06:18
+-- Dump completed on 2024-06-17 21:29:12
