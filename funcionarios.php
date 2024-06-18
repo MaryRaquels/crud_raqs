@@ -65,11 +65,11 @@ if(count($funcionarios) > 0){
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4" id="staticBackdropLabel">Adicicone o dado desejado</h1>
+                    <h1 class="modal-title fs-4" id="staticBackdropLabel">Adicione o funcionário desejado</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="./verificador/prodUp.php" method="post" data-parsley-validate>
+                    <form action="./verificador/funcCad.php" method="post" data-parsley-validate>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control " name="nome" required>
                             <label for="nome">Nome <span style="color: #FF0000">*</span></label>
@@ -128,6 +128,20 @@ if(count($funcionarios) > 0){
         });
     </script>
 <?php endif; ?>
+<!--ALERT UPDATE-->
+<?php
+    if(isset($_GET['update'])):
+        $funcNome = $_GET['nome_funcionario'];
+?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Atualizado!',
+            text: 'Dado de ' + '<?php echo $funcNome; ?>' + ' atualizado com sucesso!'
+        });
+    </script>
+<?php endif; ?>
 <!--TABLE-->
 <div class="px-3 ">
     <table class="table table-hover table-responsive table-bordered m-0 p-3">
@@ -154,7 +168,7 @@ if(count($funcionarios) > 0){
                 echo "<td>
                 <div class='d-flex align-items-center justify-content-sm-end mx-1'>
                     <form method='post' action='./verificador/funcDel.php'>
-                        <input type='hidden' name='idprodutos' value='" . $funcionario['idfuncionarios'] . "' />
+                        <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
                         <input type='hidden' name='nome' value='" . $funcionario['nome'] . "' />
                         <button class='btn btn-danger mx-2' type='submit'>Deletar</button>
                     </form>
@@ -166,12 +180,12 @@ if(count($funcionarios) > 0){
                         <div class='modal-dialog modal-dialog-centered'>
                             <div class='modal-content'>
                                 <div class='modal-header'>
-                                    <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o produto desejado</h1>
+                                    <h1 class='modal-title fs-4' id='staticBackdropLabel'>Atualize o dado desejado</h1>
                                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                 </div>
                                 <div class='modal-body'>
-                                    <form method='post' action='./verificador/funcUp.php'>
-                                        <input type='hidden' name='idprodutos' value='" . $funcionario['idfuncionarios'] . "' />
+                                    <form method='post' action='./verificador/funcUp.php' data-parsley-validate>
+                                        <input type='hidden' name='idfuncionarios' value='" . $funcionario['idfuncionarios'] . "' />
                                         <div class='form-floating mb-3'>
                                             <input type='text' class='form-control' value='". $funcionario['nome'] ."' name='nome' required>
                                             <label for='nome'>Nome <span style='color: #FF0000'>*</span></label>
@@ -186,7 +200,7 @@ if(count($funcionarios) > 0){
                                         </div>
                                         <div class'form-floating mb-3'>
                                             <label for='funcao'>Função <span style='color: #FF0000'>*</span></label>
-                                            <select name='funcao' id='funcao' class='form-control' required>
+                                            <select name='funcao'  value='" . $funcionario['funcao'] . "' class='form-control' required>
                                                 <option value=''></option>
                                                 <option name='gerente' value='gerente'>Gerente</option>
                                                 <option name='atendente' value='atendente'>Atendente</option>

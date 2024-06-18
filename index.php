@@ -25,7 +25,7 @@ if(!isset($_SESSION['login'])){
             <a class="navbar-brand mx-3" href="#">
                 <img src="./images/logo-certa.png" alt="" style="width:40px;" class="rounded-pill ">
             </a>
-            <button class="navbar-toggler" type="button" id="navbarNav" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-bs-theme="light">
+            <button class="navbar-toggler" type="button" id="navbarNav" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-bs-theme="dark">
                 <span class="navbar-toggler-icon"></span>
             </button>    
             <div class="collapse navbar-collapse" tabindex="-1" id="navbarNav" >
@@ -102,6 +102,7 @@ if(!isset($_SESSION['login'])){
             <button id="relatorio" class="btn btn-alt shadow-lg p-3 rounded m-3 text-light" style="background-color: #1d405c;">
                 <h2>Relatório</h2>
                 <h5>Categoria de produtos mais cadastradas</h5>
+                <hr>
                 <h5><a href="join.php" class="link link-light text-decoration-none">Ver Mais</a></h5>
             </button>
             </div>

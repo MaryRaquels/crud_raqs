@@ -91,6 +91,16 @@ if(count($produtos) > 0){
                             <input type="number" class="form-control " name="quantidade"  required>
                             <label for="quantidade">Quantidade <span style="color: #FF0000">*</span></label>
                         </div>
+                        <div class'form-floating mb-3'>
+                            <label for='categoria'>Categoria <span style='color: #FF0000'>*</span></label>
+                            <select name='categoria' value='" . $produto['nomecategoria'] . "' class='form-control' required>
+                                <option value=''></option>
+                                <option name='medicamentos' value='1'>Medicamentos</option>
+                                <option name='higiene pessoal' value='2'>Higiene Pessoal</option>
+                                <option name='cuidados com a pele' value='3'>Cuidados com a Pele</option>
+                                <option name='cuidados capilares' value='4'>Cuidados Capilares</option>
+                            </select>
+                        </div>
                         <input type="submit" value="Adicionar" name="submit" class="btn w-100 text-light my-2" style="background-color: #1d405c">
                         <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancelar</button>
                     </form>
@@ -124,6 +134,20 @@ if(count($produtos) > 0){
             icon: 'error',
             title: 'Deletado!',
             text: 'Produto ' + '<?php echo $prodNome; ?>' + ' deletado com sucesso!'
+        });
+    </script>
+<?php endif; ?>
+<!--ALERT UPDATE-->
+<?php
+    if(isset($_GET['update'])):
+        $prodNome = $_GET['nome_produto'];
+?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Atualizado!',
+            text: 'Produto ' + '<?php echo $prodNome; ?>' + ' atualizado com sucesso!'
         });
     </script>
 <?php endif; ?>
@@ -171,7 +195,7 @@ if(count($produtos) > 0){
                                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                 </div>
                                 <div class='modal-body'>
-                                    <form method='post' action='./verificador/prodUp.php'>
+                                    <form method='post' action='./verificador/prodUp.php' data-parsley-validate>
                                         <input type='hidden' name='idprodutos' value='" . $produto['idprodutos'] . "' />
                                         <div class='form-floating mb-3'>
                                             <input type='text' class='form-control' value='". $produto['nome_produto'] ."' name='nome' required>
@@ -190,13 +214,13 @@ if(count($produtos) > 0){
                                             <label for='quantidade'>Quantidade <span style='color: #FF0000'>*</span></label>
                                         </div>
                                         <div class'form-floating mb-3'>
+                                            <label for='categoria'>Categoria <span style='color: #FF0000'>*</span></label>
                                             <select name='categoria' value='" . $produto['nomecategoria'] . "' class='form-control' required>
                                                 <option value=''></option>
-                                                <option name='medicamentos' value='medicamentos'>Medicamentos</option>
-                                                <option name='higiene pessoal' value='higiene pessoal'>Higiene Pessoal</option>
-                                                <option name='cuidados com a pele' value='cuidados com a pele'>Cuidados com a Pele</option>
-                                                <option name='cuidados capilares' value='cuidados capilares'>Cuidados Capilares</option>
-                                                <label for='categoria'>Categoria <span style='color: #FF0000'>*</span></label>
+                                                <option name='medicamentos' value='1'>Medicamentos</option>
+                                                <option name='higiene pessoal' value='2'>Higiene Pessoal</option>
+                                                <option name='cuidados com a pele' value='3'>Cuidados com a Pele</option>
+                                                <option name='cuidados capilares' value='4'>Cuidados Capilares</option>
                                             </select>
                                         </div>
                                         <input type='submit' value='Atualizar' name='submit' class='btn w-100 text-light my-2' style='background-color: #1d405c'>
